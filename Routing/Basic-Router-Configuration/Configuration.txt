@@ -1,0 +1,79 @@
+
+Building configuration...
+[OK]
+R1-Frimp(config)#do sh run
+Building configuration...
+
+Current configuration : 1372 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname R1-Frimp
+!
+login block-for 180 attempts 3 within 50
+!
+!
+enable secret 5 $1$mERr$YlCkLMcTYWwkF1Ccndtll.
+enable password 7 0822455D0A16
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username Admin secret 5 $1$mERr$YlCkLMcTYWwkF1Ccndtll.
+!
+!
+license udi pid CISCO2911/K9 sn FTX15248268-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+ip domain-name frimp.com
+!
+!
+banner motd ^CUnauthorized Access Prohibited^C
+!
+!
+!
+!
+line con 0
+ exec-timeout 4 0
+ password 7 0802455D0A16
+ logging synchronous
+ login
+!
+line aux 0
+!
+line vty 0 4
+ exec-timeout 4 0
+ password 7 0802455D0A16
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ exec-timeout 4 0
+ password 7 0802455D0A16
+ logging synchronous
+ login local
+ transport input ssh
+!
+!
+!
+end
