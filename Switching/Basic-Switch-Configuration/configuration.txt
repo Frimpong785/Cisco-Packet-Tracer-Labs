@@ -1,0 +1,50 @@
+Building configuration...
+
+
+service password-encryption
+!
+hostname SW1-Frimp
+!
+enable secret 5 $1$mERr$YlCkLMcTYWwkF1Ccndtll.
+!
+!
+!
+no ip domain-lookup
+ip domain-name frimp.com
+!
+username Admin secret 5 $1$mERr$YlCkLMcTYWwkF1Ccndtll.
+!
+!
+!
+interface Vlan1
+ ip address 192.168.1.1 255.255.255.0
+!
+ip default-gateway 192.168.1.10
+!
+banner motd ^C Unauthorized Access ^C
+!
+!
+!
+line con 0
+ password 7 0802455D0A16
+ logging synchronous
+ login
+ exec-timeout 3 0
+!
+line vty 0 4
+ exec-timeout 3 0
+ password 7 0802455D0A16
+ logging synchronous
+ login local
+ transport input telnet
+line vty 5 15
+ exec-timeout 3 0
+ password 7 0802455D0A16
+ logging synchronous
+ login local
+ transport input telnet
+!
+!
+!
+!
+end
