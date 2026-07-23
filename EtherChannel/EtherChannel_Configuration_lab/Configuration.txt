@@ -1,0 +1,140 @@
+
+DSW1
+
+DSW1(config)#do sh run
+Building configuration...
+
+Current configuration : 1761 bytes
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname DSW1
+!
+!
+no profinet
+!
+!
+!
+!
+!
+ip routing
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+port-channel load-balance src-dst-ip
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel2
+ no switchport
+ ip address 10.0.0.1 255.255.255.252
+!
+interface FastEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode passive
+!
+interface FastEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode passive
+!
+interface FastEthernet0/3
+ no switchport
+ no ip address
+ channel-group 2 mode on
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/4
+ no switchport
+ no ip address
+ channel-group 2 mode on
+ duplex auto
+ speed auto
+!interface Vlan1
+ ip address 172.16.1.254 255.255.0.0
+!
+ip classless
+ip route 172.16.2.0 255.255.255.0 10.0.0.2 
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+!
+end
+
+
+
+
+DSW1(config)#do sh eth summ
+Flags:  D - down        P - in port-channel
+        I - stand-alone s - suspended
+        H - Hot-standby (LACP only)
+        R - Layer3      S - Layer2
+        U - in use      f - failed to allocate aggregator
+        u - unsuitable for bundling
+        w - waiting to be aggregated
+        d - default port
+
+
+Number of channel-groups in use: 2
+Number of aggregators:           2
+
+Group  Port-channel  Protocol    Ports
+------+-------------+-----------+----------------------------------------------
+
+1      Po1(SU)           LACP   Fa0/1(P) Fa0/2(P) 
+2      Po2(RU)           -      Fa0/3(P) Fa0/4(P) 
+
+
+DSW1(config)#do sh int trunk
+Port        Mode         Encapsulation  Status        Native vlan
+Po1         on           802.1q         trunking      1
+
+Port        Vlans allowed on trunk
+Po1         1-1005
+
+Port        Vlans allowed and active in management domain
+Po1         1
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Po1         1
