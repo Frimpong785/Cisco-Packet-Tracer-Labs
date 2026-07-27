@@ -1,0 +1,191 @@
+SW1(config)#do sh run
+Building configuration...
+
+Current configuration : 2910 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport trunk native vlan 33
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/2
+ switchport trunk native vlan 33
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/3
+ switchport trunk native vlan 33
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/4
+ switchport trunk native vlan 33
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/5
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/6
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/7
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/8
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/9
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/10
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/11
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/12
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/13
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/14
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/15
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/16
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/17
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/18
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/19
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/20
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/21
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/22
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/23
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/24
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+no cdp run
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+
+
+SW1(config)# 
+SW1(config)#do sh int trunk
+Port        Mode         Encapsulation  Status        Native vlan
+Fa0/1       on           802.1q         trunking      33
+Fa0/2       on           802.1q         trunking      33
+Fa0/3       on           802.1q         trunking      33
+Fa0/4       on           802.1q         trunking      33
+
+Port        Vlans allowed on trunk
+Fa0/1       1-1005
+Fa0/2       1-1005
+Fa0/3       1-1005
+Fa0/4       1-1005
+
+Port        Vlans allowed and active in management domain
+Fa0/1       1,10,33
+Fa0/2       1,10,33
+Fa0/3       1,10,33
+Fa0/4       1,10,33
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Fa0/1       1,10,33
+Fa0/2       1,10,33
+Fa0/3       1,10,33
+Fa0/4       10
